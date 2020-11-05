@@ -5,7 +5,7 @@ module ECCrypto
   # Creates a Key Pair
   def self.create_key_pair
     # Create a EC key structure, setting the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
     myecc = LibECCrypto.EC_KEY_new_by_curve_name(eccgrp_id)
     raise "Error could not create curve" if myecc.null?
@@ -53,7 +53,7 @@ module ECCrypto
   # Signs a message with a private key
   def self.sign(hex_private_key : String, message : String)
     # Create a EC key structure, setting the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
     myecc = LibECCrypto.EC_KEY_new_by_curve_name(eccgrp_id)
     raise "Error could not create curve" if myecc.null?
@@ -113,7 +113,7 @@ module ECCrypto
   # Verifies a signed message with a public key and the signature
   def self.verify(hex_public_key : String, message : String, r : String, s : String)
     # Create a EC key structure, setting the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
     myecc = LibECCrypto.EC_KEY_new_by_curve_name(eccgrp_id)
     raise "Error could not create curve" if myecc.null?
@@ -160,7 +160,7 @@ module ECCrypto
   def self.get_public_key_from_private(hex_private_key : String)
 
     # Create a EC key structure, setting the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
     myecc = LibECCrypto.EC_KEY_new_by_curve_name(eccgrp_id)
     raise "Error could not create curve" if myecc.null?
@@ -209,7 +209,7 @@ module ECCrypto
     ciphertext_len   : LibC::SizeT = 0
 
     # set the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
     raise "Message must not be empty" unless message.size > 0
 
@@ -246,7 +246,7 @@ module ECCrypto
     epubk = hex2bytes(chunks[3])
 
     # set the group type from NID
-    eccgrp_id = LibECCrypto.OBJ_txt2nid("secp256k1")
+    eccgrp_id = LibECCrypto.OBJ_txt2nid("prime256v1")
     raise "Error could not set EC group" unless eccgrp_id != 0
 
     # use the crypto library decrypt the message using the private key, ephemeral public key, init vector and tag
