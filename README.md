@@ -1,6 +1,6 @@
 # Crystal-ECDSA
 
-A Crystal C binding for the ECDSA functionality of OpenSSL that focuses specifically on secp256k1.
+A Crystal C binding for the ECDSA functionality of OpenSSL that focuses specifically on prime256v1.
 This library requires you to have OpenSSL installed.
 
 Thanks to Eric Davis for his [ecies](https://github.com/insanum/ecies) library and to John Feras for his adaptation of Eric's code for this library.
